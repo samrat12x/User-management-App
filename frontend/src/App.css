@@ -1,0 +1,10 @@
+.form{
+    text-align: center;
+    margin-top: 100px;
+
+}
+
+.passRules{
+    text-align: left;
+    display: inline-block;/* This ensures the text-align left applies correctly */
+}
