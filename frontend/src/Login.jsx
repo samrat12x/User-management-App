@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { validateFormData } from "./ValidateFormData";
 import { useNavigate  ,Link} from "react-router-dom";
+import "./Login.css"
+
 export default function Login(){
 
 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import {useNavigate ,Link} from 'react-router-dom'
 import { validateFormData } from "./ValidateFormData";
-
+import "./Register.css"
 export default function Register(){
 
 

@@ -18,34 +18,32 @@ USE `usermgmtapp`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usertable`
+-- Table structure for table `user_credentials`
 --
 
-DROP TABLE IF EXISTS `usertable`;
+DROP TABLE IF EXISTS `user_credentials`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usertable` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `DOB` date NOT NULL,
-  `phone` varchar(45) NOT NULL,
-  `role` varchar(45) NOT NULL DEFAULT 'user',
+CREATE TABLE `user_credentials` (
+  `user_id` char(36) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone_no` varchar(15) NOT NULL,
   `password` varchar(256) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `phone_no` (`phone_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usertable`
+-- Dumping data for table `user_credentials`
 --
 
-LOCK TABLES `usertable` WRITE;
-/*!40000 ALTER TABLE `usertable` DISABLE KEYS */;
-INSERT INTO `usertable` VALUES (28,'sam','sam@gmail.com','2024-07-17','1234567891','admin','scrypt:32768:8:1$FkOmXoK52JPKKTj0$8398f2dfd3e5b2f2acc88578341993fd6b7f3b067fd108e269dcc2da2f9ea009d777815a00252d66c6596c7ee3c86e89b7d9355bd7c62f5233207d3bbfd3b9e5'),(29,'Test','god123@gmail.com','2024-07-11','9953206498','user','scrypt:32768:8:1$yMEWrGH3QTwoNl7h$d5dc0acca9b00215736252c80afdd665743f537cfeef18c32170bc03816bea1eac41973ed9ed41ec897ccf42d2badc0d032d167a4a07a27227a585a02928d8b0'),(30,'samrat','samratpatel12x@gmail.com','2002-08-05','9953206494','user','scrypt:32768:8:1$e2gWa40RRqxbJokS$46198c9d9260b853a4a6bbdfc78adac12aab6a8bcb994b457e7c8be1d4398a654d96be5d45b7eadc28fd35c03d47993c1f3d99a9410c4992eed67aa76d05193a'),(31,'Row doggy','bbq@gmail.com','2024-11-12','9876543210','user','scrypt:32768:8:1$dWlG01ZEx7dKIKfB$3433afcaf4df1f8b19dd528652fc988f00cbe964afe6d18dfc0fe7fa21011e4d61b70bfe52c6ff98d63f2b93348b0ff61c209eeaa988442132cf42c4e35e9231');
-/*!40000 ALTER TABLE `usertable` ENABLE KEYS */;
+LOCK TABLES `user_credentials` WRITE;
+/*!40000 ALTER TABLE `user_credentials` DISABLE KEYS */;
+INSERT INTO `user_credentials` VALUES ('73dc5ae8-9ab5-11ef-bf6b-14cb190a4065','Row doggy','bbq@gmail.com','9876543210','scrypt:32768:8:1$dWlG01ZEx7dKIKfB$3433afcaf4df1f8b19dd528652fc988f00cbe964afe6d18dfc0fe7fa21011e4d61b70bfe52c6ff98d63f2b93348b0ff61c209eeaa988442132cf42c4e35e9231');
+/*!40000 ALTER TABLE `user_credentials` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -56,8 +54,9 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `usertable__user_credentials__connector` AFTER INSERT ON `usertable` FOR EACH ROW begin
-insert  into user_credentials(user_id ,name,email,phone_no,password) values (UUID(),new.name,new.email,new.phone,new.password);
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `new_user_cash_wallet_open` AFTER INSERT ON `user_credentials` FOR EACH ROW begin
+insert into portfolio_cash(user_id , cash)
+values (new.user_id ,0.00);
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -74,4 +73,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-04 19:59:55
+-- Dump completed on 2024-11-04 19:59:54

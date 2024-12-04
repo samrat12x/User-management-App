@@ -1,0 +1,79 @@
+/* src/components/Login.css */
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+  }
+  
+  .login h3 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .login form {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login form div {
+    margin-bottom: 15px;
+  }
+  
+  .login label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .login input[type="email"],
+  .login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .login input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .login h4 {
+    margin-top: 20px;
+    color: #555;
+  }
+  
+  .login a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .login a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
